@@ -2,6 +2,9 @@
 #include "KY040.h"
 #include "trim.h"
 
+#include "Dialog_Bold_10.h"
+#include "Monospaced_Plain_10.h"
+
 SSD1306 d(0x3c, D3, D2); // i2c address, SDA, SCL
 KY040 encoder(D6, D7, D5); // CLK, DT, SW
 
@@ -24,8 +27,8 @@ const char* SETTINGS_KEY = "KEY:";
 const int MAX_SETTINGS_LENGTH = 16;
 
 // DEFAULT SETTINGS
-char* WIFI_SSID = "Nathan's Phone";
-char* WIFI_PASS = "1stP@$$w0r";
+char* WIFI_SSID = "bestwifi";
+char* WIFI_PASS = "12apple3";
 char* THINGSPEAK_KEY = "429VUF9NBUDZ5F1G";
 
 void isr() {
@@ -36,11 +39,11 @@ void setup() {
   Serial.begin(115200);
   Serial.println("old_sample started!");
 
-  attachInterrupt(12, isr, FALLING);
+  //attachInterrupt(12, isr, FALLING);
     
-  d.init();
+  //d.init();
 
-  settingsEditor();
+  //settingsEditor();
 }
 
 void loop() {}

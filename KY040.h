@@ -1,11 +1,10 @@
-#pragma once
+#ifndef KY040_H
+#define KY040_H
 
 class KY040 {
-  public:
-    KY040(int, int, int, long = 500);
+public:
+    KY040(int clk_pin, int dt_pin, int sw_pin);
     ~KY040();
-
-    void setLongPressDuration(long);
     
     // listen and update button states
     void tick();
@@ -21,23 +20,9 @@ class KY040 {
     void reset();
     void interrupt(); // call from interrupt routine for tracking encoder position
 
-  private:
-    int _pin_clk;
-    int _pin_dt;
-    int _pin_sw;
-
-    int _encoder_pos;
-
-    long _button_long_press_duration;
-
-    bool _button_state;
-    bool _button_prev_state;
-
-    bool _button_long_pressed;
-    bool _button_unique_pressed;
-    
-    long _button_time_last_press_start;
-
-    bool _button_force_false;
+private:
+    int _pos;
 };
 
+
+#endif // KY040_H
